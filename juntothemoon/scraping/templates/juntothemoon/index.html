@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %} Главная страница {% endblock %}
+{% block content %}
+    {% for vacancy in vacancies %}
+
+        <div class="card my-3">
+            <div class="card-header">
+                <h1><a href="{{ vacancy.url }}">{{ vacancy.title }}</a></h1>
+            </div>
+
+            <div class="card-body">
+                <p class="card-text">{{ vacancy.description|safe }}</p>
+            </div>
+
+            <div class="card-footer text-muted">
+                {{ vacancy.city.name }} | {{ vacancy.Proglanguage.name }}
+                | {{ vacancy.timestamp|date:"Y-m-d H:i:s" }}
+            </div>
+
+        </div>
+
+
+    {% endfor %}
+{% endblock %}
